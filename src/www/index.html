@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <style>
+        .map {
+        height: 98vh;
+        width: 100%;
+        }
+    
+        .ol-popup {
+            position: absolute;
+            background-color: white;
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #cccccc;
+            bottom: 12px;
+            left: -50px;
+            min-width: 280px;
+        }
+        .ol-popup:after, .ol-popup:before {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .ol-popup:after {
+            border-top-color: white;
+            border-width: 10px;
+            left: 48px;
+            margin-left: -10px;
+        }
+        .ol-popup:before {
+            border-top-color: #cccccc;
+            border-width: 11px;
+            left: 48px;
+            margin-left: -11px;
+        }
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+        .ol-popup-closer:after {
+            content: "✖";
+        }
+    
+        .sidepanel {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden; 
+            padding-top: 60px; 
+            transition: 0.5s; 
+            z-index: 1100;
+        }
+
+        .sidepanel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidepanel a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidepanel .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .sidepanelFilter {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgb(0, 1, 66);
+            overflow-x: hidden; 
+            padding-top: 60px; 
+            transition: 0.5s; 
+            z-index: 1100;
+        }
+
+        .sidepanelFilter a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidepanelFilter a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidepanelFilter .closebtnFilter {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            position: absolute;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            z-index: 1000;
+            margin-left: 3%;
+            margin-top: 0.75%;
+        }
+
+        .openbtnFilter {
+            position: absolute;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: rgb(0, 1, 66);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            z-index: 1000;
+            margin-left: 6%;
+            margin-top: 0.75%;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        } 
+
+        .openbtnFilter:hover {
+            background-color: #444;
+        } 
+
+        .detectionEntry{
+            color: white;
+            padding: 5% 5% 0% 5%;
+        }
+
+        .detectionEntry:hover{
+            color: lightgrey;
+            padding: 5% 5% 0% 5%;
+        }
+        .filterForm{
+            margin-left: 10%;
+        }
+        .filterForm p{
+            color: white;
+        }
+    </style>
+
+
+    <title>Unita Server</title>
+</head>
+
+<body>
+    <!--<input type="button" onclick="loadMarkers();">-->
+    <div id="map" class="map"></div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script language="javascript" type="text/javascript" src="js/map.js"></script>
+</body>
+
+</html>
